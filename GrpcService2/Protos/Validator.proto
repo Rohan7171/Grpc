@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService3";
+
+
+service Validator {
+  rpc ValidateXml(XmlData) returns (ValidationResult);
+  rpc ValidateJson(JsonData) returns (ValidationResult);
+}
+
+message XmlData {
+  string content = 1;
+}
+
+message JsonData {
+  string content = 1;
+}
+
+message ValidationResult {
+  bool valid = 1;
+  string error_message = 2; // Optional
+}
